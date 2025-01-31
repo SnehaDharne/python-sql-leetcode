@@ -1,2 +1,2 @@
-# python-notebooks
-Python Notebooks for my DSA
+# python
+DSA and SQL Daily Practice
