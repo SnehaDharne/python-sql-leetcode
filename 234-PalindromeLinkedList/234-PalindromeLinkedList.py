@@ -18,8 +18,6 @@ class Solution:
         fast = head
         if slow == None or slow.next == None:
             return True
-        if slow.next.next == None:
-            return (slow.val == slow.next.val)
         while fast.next != None and fast.next.next != None:
             slow = slow.next
             fast = fast.next.next
