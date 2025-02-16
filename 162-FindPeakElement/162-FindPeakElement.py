@@ -1,4 +1,3 @@
-
 class Solution:
     def findPeakElement(self, nums: List[int]) -> int:
         start = 0
@@ -28,5 +27,3 @@ class Solution:
             if nums[mid-1] > nums[mid] and nums[mid]<nums[mid+1]:
                 end = mid
             
-
-        return -1
