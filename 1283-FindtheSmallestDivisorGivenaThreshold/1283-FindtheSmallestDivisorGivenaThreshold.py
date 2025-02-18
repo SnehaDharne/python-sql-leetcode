@@ -1,6 +1,5 @@
 class Solution:
     def smallestDivisor(self, nums: List[int], threshold: int) -> int:
-        n = len(nums)
         start = 1
         end = max(nums)
         ans = -1
@@ -8,7 +7,7 @@ class Solution:
         while start <= end:
             mid = (start + end)//2
             sum1 = 0
-            for i in range(n):
+            for i in range(len(nums)):
                 sum1+= math.ceil(nums[i]/mid)
             if sum1 <= threshold:
                 ans = mid
