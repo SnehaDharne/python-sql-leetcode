@@ -6,10 +6,7 @@ class Solution:
         ans = -1
         if sum(nums)<=threshold: return 1
         while start <= end:
-            print(start, 'start')
-            print(end, 'end')
             mid = (start + end)//2
-            print(mid, 'mid')
             sum1 = 0
             for i in range(n):
                 sum1+= math.ceil(nums[i]/mid)
