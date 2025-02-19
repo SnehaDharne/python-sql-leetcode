@@ -1,8 +1,10 @@
-class Solution:
-    def containsDuplicate(self, nums: List[int]) -> bool:
-        nums_set = set(nums)
-        diff = len(nums) - len(nums_set)
-        if diff > 0:
-            return True
-        else:
-            return False
+# Time complexity: O(n)
+# Space complexity: O(n)
+class Solution(object):
+    def containsDuplicate(self, nums):
+        hset = set()
+        for idx in nums:
+            if idx in hset:
+                return True
+            else:
+                hset.add(idx)
