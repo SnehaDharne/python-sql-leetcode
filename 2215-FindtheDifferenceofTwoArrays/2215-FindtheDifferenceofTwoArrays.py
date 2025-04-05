@@ -1,9 +1,18 @@
-# Last updated: 4/5/2025, 5:29:33 PM
+# Last updated: 4/5/2025, 5:34:30 PM
 class Solution(object):
-    def findDifference(self, nums1, nums2):
+    def uniqueOccurrences(self, arr):
         """
-        :type nums1: List[int]
-        :type nums2: List[int]
-        :rtype: List[List[int]]
+        :type arr: List[int]
+        :rtype: bool
         """
-        return ([list(set(nums1)-set(nums2)), list(set(nums2) - set(nums1))])
+        count_map = {}
+        for i in arr:
+            if i not in count_map:
+                count_map[i] = 1
+            else:
+                count_map[i] +=1
+        
+        l1 = list(count_map.values())
+
+        return (len(l1) == len(set(l1)))
+        
