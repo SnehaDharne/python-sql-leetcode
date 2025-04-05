@@ -1,23 +1,17 @@
-# Last updated: 4/5/2025, 5:41:30 PM
+# Last updated: 4/5/2025, 6:09:13 PM
 class Solution(object):
-    def closeStrings(self, word1, word2):
+    def removeStars(self, s):
         """
-        :type word1: str
-        :type word2: str
-        :rtype: bool
+        :type s: str
+        :rtype: str
         """
-        word1_map = {}
-        word2_map = {}
-        for char in word1:
-            word1_map[char] = word1_map.get(char,0)+1
-        for char in word2:
-            word2_map[char] = word2_map.get(char,0)+1
-        
-        if set(word1_map.keys()) != set(word2_map.keys()):
-            return False
-
-        return sorted(word1_map.values()) == sorted(word2_map.values())
-
-
-
-        
+        s1 = list(s[::-1])  # Convert to a list for mutable modification
+        s_count = 0
+        for i in range(len(s1)):
+            if s1[i] == '*':
+                s1[i] = '' 
+                s_count += 1
+            elif s_count > 0:
+                s1[i] = '' 
+                s_count -= 1
+        return "".join(s1)[::-1]
