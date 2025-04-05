@@ -1,18 +1,23 @@
-# Last updated: 4/5/2025, 5:34:30 PM
+# Last updated: 4/5/2025, 5:41:30 PM
 class Solution(object):
-    def uniqueOccurrences(self, arr):
+    def closeStrings(self, word1, word2):
         """
-        :type arr: List[int]
+        :type word1: str
+        :type word2: str
         :rtype: bool
         """
-        count_map = {}
-        for i in arr:
-            if i not in count_map:
-                count_map[i] = 1
-            else:
-                count_map[i] +=1
+        word1_map = {}
+        word2_map = {}
+        for char in word1:
+            word1_map[char] = word1_map.get(char,0)+1
+        for char in word2:
+            word2_map[char] = word2_map.get(char,0)+1
         
-        l1 = list(count_map.values())
+        if set(word1_map.keys()) != set(word2_map.keys()):
+            return False
 
-        return (len(l1) == len(set(l1)))
+        return sorted(word1_map.values()) == sorted(word2_map.values())
+
+
+
         
