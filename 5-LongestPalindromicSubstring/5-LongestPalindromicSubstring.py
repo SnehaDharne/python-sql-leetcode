@@ -1,4 +1,4 @@
-# Last updated: 4/7/2025, 8:22:01 PM
+# Last updated: 4/7/2025, 8:22:32 PM
 class Solution(object):
     def maxArea(self, height):
         """
@@ -10,8 +10,7 @@ class Solution(object):
         j = len(height) -1
 
         while i < j:
-                vol = min(height[i],height[j]) * (j-i)
-                max_vol = max(vol, max_vol)
+                max_vol = max(min(height[i],height[j]) * (j-i), max_vol)
                 if height[i] < height[j]:
                     i +=1
                 else:
