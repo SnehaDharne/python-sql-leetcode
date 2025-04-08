@@ -1,19 +1,34 @@
-# Last updated: 4/7/2025, 8:22:32 PM
+# Last updated: 4/7/2025, 8:31:40 PM
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
 class Solution(object):
-    def maxArea(self, height):
+    def removeNthFromEnd(self, head, n):
         """
-        :type height: List[int]
-        :rtype: int
+        :type head: Optional[ListNode]
+        :type n: int
+        :rtype: Optional[ListNode]
         """
-        max_vol = 0
-        i = 0
-        j = len(height) -1
+        curr = head
+        if not head or not head.next:
+            return None
+        count = 0
+        while curr is not None:
+            count+=1
+            curr = curr.next
+        n = count - n
+        print(n)
+        curr = head
+        if n == 0:
+            head = head.next
+            return head
+        for i in range(n-1):
+            curr = curr.next
+            print(curr)
+        curr.next = curr.next.next
 
-        while i < j:
-                max_vol = max(min(height[i],height[j]) * (j-i), max_vol)
-                if height[i] < height[j]:
-                    i +=1
-                else:
-                    j -=1
+        return head
         
-        return max_vol
+        
