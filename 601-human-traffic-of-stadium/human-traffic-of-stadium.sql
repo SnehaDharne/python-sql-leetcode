@@ -1,11 +1,8 @@
 # Write your MySQL query statement below
-select distinct * 
-from stadium 
-where people >= 100 and 
-      ((id+1 in  (select id from stadium where people >= 100) and 
-      id+2 in (select id from stadium where people >= 100) ) or 
-        (id-1 in  (select id from stadium where people >= 100) and 
-      id-2 in (select id from stadium where people >= 100)) or 
-      (id-1 in  (select id from stadium where people >= 100) and 
-        id+1 in (select id from stadium where people >= 100) )
-      )
+select distinct s1.* 
+from stadium s1, stadium s2, stadium s3
+where (s1.people >= 100) and  (s2.people>=100) and  (s3.people>=100) and 
+        ((s1.id+1 = s2.id and s1.id+2 = s3.id) or
+        (s1.id-1 = s2.id and s1.id-2 = s3.id) or
+        (s1.id+1 = s2.id and s1.id-1 = s3.id))
+order by s1.id;
