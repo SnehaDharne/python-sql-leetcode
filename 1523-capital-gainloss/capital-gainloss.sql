@@ -6,7 +6,7 @@
 -- select q3.stock_name, (q4.sell - q3.buy) as capital_gain_loss from q3 join q4 on q3.stock_name = q4.stock_name
 
 
-select distinct s1.stock_name, 
-    ((select sum(s2.price) from stocks s2 where s2.stock_name = s1.stock_name and s2.operation = 'Sell') - 
-    (select sum(s3.price) from stocks s3 where s3.stock_name = s1.stock_name and s3.operation = 'Buy')) as capital_gain_loss
+select distinct s1.stock_name, sum(
+    case when operation = 'Buy' then -price else price end
+)as capital_gain_loss
  from stocks s1 group by stock_name
