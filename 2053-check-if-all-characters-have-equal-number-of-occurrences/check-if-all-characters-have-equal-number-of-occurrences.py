@@ -4,7 +4,5 @@ class Solution:
         for i in s:
             hash_map[i] = hash_map.get(i, 0) + 1
         val = hash_map[i]
-        for key, value in hash_map.items():
-            if value != val:
-                return False
-        return True
+        all_vals = hash_map.values()
+        return len(set(all_vals)) == 1
